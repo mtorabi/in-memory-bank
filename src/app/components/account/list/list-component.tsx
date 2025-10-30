@@ -4,6 +4,7 @@ import {
 } from '../hook';
 import { AccountCard } from '../card/account-card';
 import CreateAccountForm from '../form/create-account-form';
+import TransferMoneyForm from '../form/transfer-money-form';
 
 const BankAccountsList: React.FC = () => {
   const { data: accounts, isLoading, error, refetch } = useBankAccounts();
@@ -63,6 +64,8 @@ const BankAccountsList: React.FC = () => {
       </div>
 
       <CreateAccountForm />
+
+      <TransferMoneyForm />
 
       {accounts && accounts.length === 0 ? (
         <div className="text-center p-8 bg-gray-50 rounded-lg">
