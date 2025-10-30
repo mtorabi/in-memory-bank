@@ -17,7 +17,13 @@ export const fetchBankAccountById = async (accountId: string): Promise<BankAccou
 export const createBankAccount = async (account: BankAccount): Promise<BankAccount> => {
     const raw = await fetcher(`${apiBaseUrl}/accounts`, {
         method: "POST",
-        body: JSON.stringify(account),
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            accountHolder: account.accountHolder,
+            initialBalance: account.balance,
+        }),
     });
     return mapToBankAccount(raw);
 };
@@ -25,6 +31,9 @@ export const createBankAccount = async (account: BankAccount): Promise<BankAccou
 export const withdrawFromAccount = async (accountId: string, amount: number): Promise<BankAccount> => {
     const raw = await fetcher(`${apiBaseUrl}/accounts/${accountId}/withdraw`, {
         method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
         body: JSON.stringify({ amount }),
     });
     return mapToBankAccount(raw);
@@ -33,6 +42,9 @@ export const withdrawFromAccount = async (accountId: string, amount: number): Pr
 export const depositToAccount = async (accountId: string, amount: number): Promise<BankAccount> => {
     const raw = await fetcher(`${apiBaseUrl}/accounts/${accountId}/deposit`, {
         method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
         body: JSON.stringify({ amount }),
     });
     return mapToBankAccount(raw);
@@ -45,6 +57,9 @@ export const transferBetweenAccounts = async (
 ): Promise<boolean> => {
     const raw = await fetcher(`${apiBaseUrl}/accounts/transfer`, {
         method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
         body: JSON.stringify({ fromAccountId, toAccountId, amount }),
     });
     return raw.status === 200;
