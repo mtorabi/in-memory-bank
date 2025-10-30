@@ -4,7 +4,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { queryClient } from './app/shared/query/queryClient';
 import './index.css';
-import App from './components/app';
+import App from './app/components/app/App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
