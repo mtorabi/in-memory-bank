@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { 
-  useBankAccounts 
+import {
+  useBankAccounts
 } from '../hook';
 import { AccountCard } from '../card/account-card';
 import CreateAccountForm from '../form/create-account-form';
@@ -11,8 +11,6 @@ const BankAccountsList: React.FC = () => {
 
   const handleAccountClick = (accountId: string) => {
     console.log(`Navigate to account details: ${accountId}`);
-    // Here you would typically navigate to account details page
-    // e.g., router.push(`/accounts/${accountId}`)
   };
 
   const handlePrefetch = (accountId: string) => {
@@ -63,9 +61,10 @@ const BankAccountsList: React.FC = () => {
         </div>
       </div>
 
-      <CreateAccountForm />
-
-      <TransferMoneyForm />
+      <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
+        <CreateAccountForm />
+        <TransferMoneyForm />
+      </div>
 
       {accounts && accounts.length === 0 ? (
         <div className="text-center p-8 bg-gray-50 rounded-lg">
