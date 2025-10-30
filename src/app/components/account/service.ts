@@ -42,12 +42,12 @@ export const transferBetweenAccounts = async (
     fromAccountId: string,
     toAccountId: string,
     amount: number
-): boolean => {
+): Promise<boolean> => {
     const raw = await fetcher(`${apiBaseUrl}/accounts/transfer`, {
         method: "POST",
         body: JSON.stringify({ fromAccountId, toAccountId, amount }),
     });
-    return true;
+    return raw.status === 200;
 };
 
 function mapToBankAccounts(data: any): BankAccount[] {
