@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import './App.css';
+import BankAccountsList from '../account/list/list-component';
 
 // Example API fetch function
 const fetchExample = async () => {
@@ -19,31 +19,13 @@ function App() {
   });
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>React Query Example</h1>
-        
-        {isLoading && <p>Loading...</p>}
-        {error && <p>Error: {error.message}</p>}
-        {data && (
-          <div>
-            <h2>{data.title}</h2>
-            <p>{data.body}</p>
-          </div>
-        )}
-        
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://tanstack.com/query"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React Query
-        </a>
+    <div className="min-h-screen bg-gray-100">
+      <header className="bg-blue-600 text-white p-6 shadow-lg">
+        <h1 className="text-3xl font-bold text-center">Welcome to In-Memory Bank</h1>
       </header>
+      <main className="container mx-auto p-6">
+        <BankAccountsList />
+      </main>
     </div>
   );
 }
